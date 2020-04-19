@@ -17,7 +17,14 @@ class ShopProvider extends Component {
   }
 
   componentDidMount() {
-    this.createCheckout()
+    const previousCart = localStorage.getItem('cart')
+    
+    if(previousCart){
+      const localCart = JSON.parse(previousCart)
+      this.setState({ checkout: localCart})
+    }else{
+      this.createCheckout()
+    }
   }
 
   createCheckout = async () => {
@@ -31,7 +38,10 @@ class ShopProvider extends Component {
       quantity: parseInt(quantity, 10)
     }]
     const checkout = await client.checkout.addLineItems(this.state.checkout.id, lineItemsToAdd)
-    this.setState({ checkout: checkout })
+    
+    localStorage.setItem('cart', JSON.stringify(checkout))
+
+    this.setState({ checkout: checkout })    
 
     this.openCart()
   }
