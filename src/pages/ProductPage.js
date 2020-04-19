@@ -18,8 +18,6 @@ const ProductPage = ({ location }) => {
       }else{
         setProdut(localStorage.getItem('productId'))
       }
-    }else{
-      setProdut(localStorage.getItem('productId'))
     }
   }, [])
 
