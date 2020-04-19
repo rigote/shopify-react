@@ -8,6 +8,7 @@ const ProductPage = ({ location }) => {
   const [product, setProdut] = useState()
 
   if (location.state) {
+    console.log(location.state)
     const { state = {} } = location
     const { productId } = state
     localStorage.setItem('productId', productId)
