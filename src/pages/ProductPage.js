@@ -1,16 +1,25 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 import Layout from '../components/Layout'
 import Product from '../components/Product'
 import Loading from '../components/Loading'
 
 const ProductPage = ({ location }) => {
-  const { state = {} } = location
-  const { productId } = state
-  
+  const [product, setProdut] = useState()
+
+  if (location.state) {
+    const { state = {} } = location
+    const { productId } = state
+    localStorage.setItem('productId', productId)
+  }
+
+  useEffect(() => {
+    setProdut(localStorage.getItem('productId'))
+  }, [])
+
   return (
     <Layout>
-      {productId ? <Product id={productId} /> : <Loading />}
+      {product ? <Product id={product} /> : <Loading />}
     </Layout>
   )
 }
