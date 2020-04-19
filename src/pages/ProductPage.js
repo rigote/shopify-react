@@ -15,6 +15,8 @@ const ProductPage = ({ location }) => {
       if(productId){
         localStorage.setItem('productId', productId)
         setProdut(productId)
+      }else{
+        setProdut(localStorage.getItem('productId'))
       }
     }else{
       setProdut(localStorage.getItem('productId'))
