@@ -7,17 +7,18 @@ import Loading from '../components/Loading'
 const ProductPage = ({ location }) => {
   const [product, setProdut] = useState()
 
-  if (location.state) {
-    const { state = {} } = location
-    const { productId } = state
-    
-    if(productId)
-      console.log(productId)
-      localStorage.setItem('productId', productId)
-  }
-
   useEffect(() => {
-    setProdut(localStorage.getItem('productId'))
+    if (location.state) {
+      const { state = {} } = location
+      const { productId } = state
+
+      if(productId){
+        localStorage.setItem('productId', productId)
+        setProdut(productId)
+      }
+    }else{
+      setProdut(localStorage.getItem('productId'))
+    }
   }, [])
 
   return (
