@@ -13,7 +13,8 @@ class ShopProvider extends Component {
     products: [],
     product: {},
     checkout: {},
-    isCartOpen: false
+    isCartOpen: false,
+    itemsCart: 0
   }
 
   componentDidMount() {
@@ -22,6 +23,7 @@ class ShopProvider extends Component {
     if(previousCart){
       const localCart = JSON.parse(previousCart)
       this.setState({ checkout: localCart})
+      this.setItemsCart(localCart)
     }else{
       this.createCheckout()
     }
@@ -42,7 +44,8 @@ class ShopProvider extends Component {
     localStorage.setItem('cart', JSON.stringify(checkout))
 
     this.setState({ checkout: checkout })    
-
+    this.setItemsCart(checkout)
+    
     this.openCart()
   }
 
@@ -55,6 +58,14 @@ class ShopProvider extends Component {
     const product = await client.product.fetch(id)
     this.setState({ product: product })
     return product
+  }
+
+  setItemsCart = (checkout) => {
+    let count = 0
+    for (let i = 0; i < checkout.lineItems.length; i++) {
+      count = count + checkout.lineItems[i].quantity
+    }
+    this.setState({ itemsCart: count })
   }
 
   closeCart = () => { this.setState({ isCartOpen: false }) }

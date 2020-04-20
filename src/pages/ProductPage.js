@@ -6,7 +6,7 @@ import Loading from '../components/Loading'
 
 const ProductPage = ({ location }) => {
   const [product, setProdut] = useState()
-
+  
   useEffect(() => {
     if (location.state) {
       const { state = {} } = location
@@ -18,6 +18,8 @@ const ProductPage = ({ location }) => {
       }else{
         setProdut(localStorage.getItem('productId'))
       }
+    }else{
+      setProdut(localStorage.getItem('productId'))
     }
   }, [])
 

@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useState, useEffect} from "react"
 import { ShopContext } from '../../context/shopContext'
 import { Link } from 'gatsby'
 
@@ -7,8 +7,8 @@ import './styles.css'
 
 const Header = () => {
 
-  const { openCart, checkout } = useContext(ShopContext)
-
+  const { openCart, itemsCart } = useContext(ShopContext)
+  
   return (
     <header>
       <div className="flex mb-4">
@@ -22,7 +22,7 @@ const Header = () => {
                 <path d="M5.67 6H23l-1.68 8.39a2 2 0 0 1-2 1.61H8.75a2 2 0 0 1-2-1.74L5.23 2.74A2 2 0 0 0 3.25 1H1"></path>
               </svg>
               <span className="text-white bg-gray-600 font-semibold text-xs rounded-full h-5 w-5 flex items-center justify-center absolute position-right-negative">
-                {checkout.lineItems && checkout.lineItems.length}
+                {itemsCart && itemsCart}
               </span>
             </div>
           </div>
