@@ -49,7 +49,7 @@ const ProductList = () => {
             <Link to="ProductPage" state={{ productId: product.id }} className="w-1/3 text-right text-xs text-blue-500 hover:text-blue-700"><span>Ver detalhes e comprar</span></Link>
           </div>
         </div>
-      : ''))}
+      : <div className="min-h-screen"><Loading /></div>))}
     </div>
   )
 }
