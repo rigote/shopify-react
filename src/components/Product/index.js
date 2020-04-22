@@ -21,7 +21,7 @@ const Product = (params) => {
 
   return (
     <div className="flex flex-wrap">
-      <div className="img-product mr-8">
+      <div className="img-product mr-8 overflow-hidden">
         <img className="w-full object-cover" src={product.images[0].src} alt="" />
       </div>
       <div className="w-2/5">
