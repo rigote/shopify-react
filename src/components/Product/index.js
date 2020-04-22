@@ -26,7 +26,7 @@ const Product = (params) => {
       </div>
       <div className="w-2/5">
         <div className="border-b border-gray-400 mb-4 pb-4">
-          <h3 className="text-2xl font-semibold">{product.title}</h3>
+          <h3 className="w-full text-2xl font-semibold">{product.title}</h3>
           <small className="text-gray-600">Código: {product.variants[0].sku}</small>
         </div>
         <div className="flex items-center border-b border-gray-400 mb-4 pb-4">
