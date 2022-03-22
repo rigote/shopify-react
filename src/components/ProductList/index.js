@@ -20,12 +20,13 @@ const ProductList = () => {
   const getToken = async () => {
     const res = await authenticate.post('/Authentication/Authenticate?userName=paulo.roberto@samuraiexperts.com.br&password=123456&tenantId=35286082-eb17-4b9e-aad9-a3d5df25526a')
     if(res.data !== ''){
+      console.log(res.data)
       getProductSeller(res.data)
     }
   }
 
   const getProductSeller = async (token) => {
-    let res = await api.get('/Products/Full', { headers: { 'Authorization': `Bearer ${token}` } })
+    let res = await api.get('/Products/Full', { headers: { 'Authorization': `Bearer ${String(token)}` } })
     const clientCodes = []
     for (let i = 0; i < res.data.value.length; i++) {
       if (res.data.value[i].tenantId === '35286082-eb17-4b9e-aad9-a3d5df25526a')
