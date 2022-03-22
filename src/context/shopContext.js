@@ -4,7 +4,7 @@ import Client from 'shopify-buy'
 const ShopContext = React.createContext()
 
 const client = Client.buildClient({
-  storefrontAccessToken: 'aa9b783a961dc4b1728b55b690c26a4a',
+  storefrontAccessToken: 'a984494ca91da297dd9137dbce1f7a7d',
   domain: 'poc-seller-center.myshopify.com'
 })
 
