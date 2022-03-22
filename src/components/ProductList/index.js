@@ -1,5 +1,5 @@
 import { Link } from 'gatsby';
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../../context/shopContext';
 import { api } from '../../services/api';
 import Loading from '../Loading';
