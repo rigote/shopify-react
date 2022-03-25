@@ -1,4 +1,5 @@
 import { Link } from 'gatsby';
+import axios from 'axios'
 import React, { useContext, useEffect, useState } from 'react';
 import { ShopContext } from '../../context/shopContext';
 import { api, authenticate } from '../../services/api';
