@@ -28,10 +28,11 @@ const ProductList = () => {
     let res = await api.get('/Products/Full', { headers: { 'Authorization': `Bearer ${token}` } })
     const clientCodes = []
     console.log('Products full', res.data)
-    for (let i = 0; i < res.data.value.length; i++) {
-      if (res.data.value[i].tenantId === '35286082-eb17-4b9e-aad9-a3d5df25526a')
-        clientCodes.push(res.data.value[i].clientCode)
-    }
+    res.data.map((p) => p.tenantId === '35286082-eb17-4b9e-aad9-a3d5df25526a' && clientCodes.push(p))
+    // for (let i = 0; i < res.data.value.length; i++) {
+    //   if (res.data.value[i].tenantId === '35286082-eb17-4b9e-aad9-a3d5df25526a')
+    //     clientCodes.push(res.data.value[i].clientCode)
+    // }
     setSellerProduct(clientCodes)
   }
 
