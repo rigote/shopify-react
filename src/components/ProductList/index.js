@@ -27,6 +27,7 @@ const ProductList = () => {
   const getProductSeller = async (token) => {
     let res = await api.get('/Products/Full', { headers: { 'Authorization': `Bearer ${token}` } })
     const clientCodes = []
+    console.log(res.data.value)
     if(res.status == 200){
       res.data.value.map((p) => p.tenantId === '35286082-eb17-4b9e-aad9-a3d5df25526a' && clientCodes.push(p))
     }
