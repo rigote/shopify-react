@@ -9,6 +9,16 @@ const ProductList = () => {
   const { fetchAllProducts, products } = useContext(ShopContext)
   const [sellerProduct, setSellerProduct] = useState([])
 
+  const instance = axios.create({
+    httpsAgent: new https.Agent({  
+      rejectUnauthorized: false
+    })
+  });
+  instance.get('https://api-controlaccess.mysamurai.com.br');
+  const agent = new https.Agent({  
+    rejectUnauthorized: false
+  });
+
   useEffect(() => {
     fetchAllProducts()
     getToken()
@@ -18,7 +28,7 @@ const ProductList = () => {
   }, [fetchAllProducts])
 
   const getToken = async () => {
-    const res = await authenticate.post('/Authentication/Authenticate?userName=paulo.roberto@samuraiexperts.com.br&password=123456&tenantId=35286082-eb17-4b9e-aad9-a3d5df25526a', {withCredentials: true})
+    const res = await authenticate.post('/Authentication/Authenticate?userName=paulo.roberto@samuraiexperts.com.br&password=123456&tenantId=35286082-eb17-4b9e-aad9-a3d5df25526a', {httpsAgent: agent, withCredentials: true})
     if(res.data !== ''){
       console.log(res.data.access_token)
       getProductSeller(res.data.access_token)
