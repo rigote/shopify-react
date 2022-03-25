@@ -18,7 +18,7 @@ const ProductList = () => {
   }, [fetchAllProducts])
 
   const getToken = async () => {
-    const res = await authenticate.post('/Authentication/Authenticate?userName=paulo.roberto@samuraiexperts.com.br&password=123456&tenantId=35286082-eb17-4b9e-aad9-a3d5df25526a')
+    const res = await authenticate.post('/Authentication/Authenticate?userName=paulo.roberto@samuraiexperts.com.br&password=123456&tenantId=35286082-eb17-4b9e-aad9-a3d5df25526a', {withCredentials: true})
     if(res.data !== ''){
       console.log(res.data.access_token)
       getProductSeller(res.data.access_token)
